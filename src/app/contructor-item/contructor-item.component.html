@@ -1,0 +1,13 @@
+<div class="container">
+  <div *ngFor="let item of data" class="inner_container" id={{item.id}}>
+    <div *ngIf="checkIsObject(item)">
+      <div class="buttons">
+        <button (click)="addContainer(item)">Add container</button>
+        <button>Edit</button>
+        <button (click)="deleteContainer(item)">Delete</button>
+      </div>
+      <app-contructor-item *ngIf="item['items'].length" [data]="item['items']"></app-contructor-item>
+    </div>
+    <div *ngIf="!checkIsObject(item)">{{item}}</div>
+  </div>
+</div>

@@ -5,16 +5,20 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ContructorItemComponent } from './contructor-item/contructor-item.component';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ContructorItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     DragDropModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

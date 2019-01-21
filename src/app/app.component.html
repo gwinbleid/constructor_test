@@ -1,6 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-<div class="example-container">
+<!-- <div class="example-container">
   <h2>To do</h2>
 
   <div
@@ -56,6 +56,7 @@
       class="example-list"
       (cdkDropListDropped)="drop($event)"
   >
+    <div class="deleting_section"><button (click)="deleteItem(i)">Удалить</button></div>
     <div class="example-box" *ngFor="let el of item" cdkDrag>{{el}}</div>
   </div>
 </div>
@@ -70,7 +71,37 @@
   </span>
 </div>
 
+<h1>Test copying feature</h1>
 
+<div class="example-container">
+  <div cdkDropList
+    id="copy1"
+    [cdkDropListData]="copyArr1"
+    [cdkDropListConnectedTo]="['copy2']"
+    class="example-list"
+  >
+    <div class="example-box" *ngFor="let el of copyArr1" cdkDrag>{{el}}</div>
+  </div>
+</div>
+
+<div class="example-container">
+    <div cdkDropList
+    id="copy2"
+    [cdkDropListData]="copyArr2"
+    class="example-list"
+    (cdkDropListDropped)="drop2($event)"
+  >
+    <div class="example-box" *ngFor="let el of copyArr2" cdkDrag>{{el}}</div>
+  </div>
+</div> -->
+
+<h1>drag and drop - tree creation</h1>
+
+<button (click)="addContainer()">Add container</button>
+
+<div class="main">
+  <app-contructor-item [data]="treeArray"></app-contructor-item>
+</div>
 
 
 <router-outlet></router-outlet>

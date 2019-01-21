@@ -1,14 +1,16 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem  } from '@angular/cdk/drag-drop';
+import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem, copyArrayItem  } from '@angular/cdk/drag-drop';
+import { iterateListLike } from '../../node_modules/@angular/core/src/change_detection/change_detection_util';
+import { isNgTemplate } from '../../node_modules/@angular/compiler';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  todo = [
+  /* todo = [
     "Max",
     "Nicole",
     'Aysek'
@@ -32,6 +34,16 @@ export class AppComponent {
     [ "Neo", "Lans", "Herbert" ]
   ];
 
+  copyArr1 = ["And", "Or", "<", ">", "==="];
+  copyArr2 = []; */
+
+
+  treeArray = [ ];
+
+  ngOnInit() {
+    
+  }
+
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -43,11 +55,30 @@ export class AppComponent {
     }
   }
 
+  drop2(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer.id !== event.container.id) {
+      copyArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
+  }
+
   getLinkOfConnectedArrays() {
 
   }
 
-  createDynamicConnectedList(i) {
+  addContainer() {
+    this.treeArray = [...this.treeArray, {id: `item-${this.treeArray.length}`, items: []}];
+    console.log(this.treeArray);
+  }
+
+  /* createDynamicConnectedList(i) {
     const arr = this.containerArray
             .map((el, index) => {
               if (typeof(el) === 'object') {
@@ -79,4 +110,8 @@ export class AppComponent {
   checkItemIsObject(item) {
     return typeof(item) === 'object';
   }
+
+  deleteItem(index) {
+    this.containerArray = [...this.containerArray.filter((el, i) => i !== index)];
+  }*/
 }
