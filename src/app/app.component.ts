@@ -10,7 +10,7 @@ import { isNgTemplate } from '../../node_modules/@angular/compiler';
 })
 export class AppComponent implements OnInit {
 
-  /* todo = [
+  todo = [
     "Max",
     "Nicole",
     'Aysek'
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
   ];
 
   copyArr1 = ["And", "Or", "<", ">", "==="];
-  copyArr2 = []; */
+  copyArr2 = [];
 
 
   treeArray = [ ];
@@ -78,7 +78,7 @@ export class AppComponent implements OnInit {
     console.log(this.treeArray);
   }
 
-  /* createDynamicConnectedList(i) {
+  createDynamicConnectedList(i) {
     const arr = this.containerArray
             .map((el, index) => {
               if (typeof(el) === 'object') {
@@ -113,5 +113,5 @@ export class AppComponent implements OnInit {
 
   deleteItem(index) {
     this.containerArray = [...this.containerArray.filter((el, i) => i !== index)];
-  }*/
+  }
 }

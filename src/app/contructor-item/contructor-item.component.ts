@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-contructor-item',
@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ContructorItemComponent implements OnInit {
   @Input() data: Array<Object>;
+  @Output() deleteChild = new EventEmitter();
 
   constructor() { }
 
@@ -19,8 +20,8 @@ export class ContructorItemComponent implements OnInit {
     console.log(data);
   }
 
-  deleteContainer(data) {
-
+  deleteContainer(item) {
+    this.data = [...this.data.filter(el => el['id'] !== item['id'])];
   }
 
   checkIsObject(data) {

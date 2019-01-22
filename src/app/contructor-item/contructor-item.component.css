@@ -14,12 +14,14 @@
     padding-bottom: 20px;
 }
 
-.inner-container {
+.inner_container {
     min-height: 100px;
     display: flex;
     flex-direction: column;
     background-color: red;
     border: 1px solid black;
+
+    margin: 40px;
 }
 
 .buttons {
